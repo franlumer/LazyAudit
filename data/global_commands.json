@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Nmap básico",
+    "category": "recon",
+    "command": "nmap -sV {RHOST}"
+  },
+  {
+    "name": "Nmap completo",
+    "category": "recon",
+    "command": "nmap -sC -sV -p- {RHOST}"
+  },
+  {
+    "name": "Gobuster",
+    "category": "web",
+    "command": "gobuster dir -u {TARGET_URL}"
+  },
+  {
+    "name": "WhatWeb",
+    "category": "web",
+    "command": "whatweb {TARGET_URL}"
+  },
+  {
+    "name": "Whois",
+    "category": "recon",
+    "command": "whois {DOMAIN}"
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Nmap básico",
+    "category": "recon",
+    "command": "nmap -sV {RHOST}"
+  },
+  {
+    "name": "Nmap puertos",
+    "category": "recon",
+    "command": "nmap -p {RPORT} {RHOST}"
+  },
+  {
+    "name": "Gobuster",
+    "category": "web",
+    "command": "gobuster dir -u {TARGET_URL}"
+  }
+]

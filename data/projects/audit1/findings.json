@@ -1,0 +1,12 @@
+[
+  {
+    "host": "192.168.1.10",
+    "description": "Servidor web",
+    "vulns": [
+      "User Enumeration",
+      "SSRF",
+      "Exposed Configuration"
+    ],
+    "severity":"high"
+  }
+]
