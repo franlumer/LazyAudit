@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Nmap básico",
+    "command": "nmap -sV {RHOST}",
+    "tags":["recon", "nmap"],
+    "description": "recon"
+  },
+  {
+    "title": "Nmap básico1",
+    "command": "nmap -sV {RHOST}1",
+    "tags":["recon1", "nmap1"],
+    "description": "recon1"
+  },
+  {
+    "title": "Nmap básico2",
+    "command": "nmap -sV {RHOST}2",
+    "tags":["recon2", "nmap2"],
+    "description": "recon2"
+  },
+  {
+    "title": "Nmap básico2",
+    "command": "nmap -sV {RHOST}2",
+    "tags":["recon2", "nmap2"],
+    "description": "recon2"
+  },
+  {
+    "title": "Nmap básico2",
+    "command": "nmap -sV {RHOST}2",
+    "tags":["recon2", "nmap2"],
+    "description": "recon2"
+  }
+]
