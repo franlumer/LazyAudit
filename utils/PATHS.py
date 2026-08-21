@@ -1,4 +1,4 @@
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-global_commands_file = os.path.join(BASE_DIR,"global_commands.json")
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+GLOBAL_COMMANDS_FILE = os.path.join(PROJECT_ROOT,"data/global_commands.json")

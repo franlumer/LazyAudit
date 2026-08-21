@@ -1,14 +1,5 @@
 [
     {
-        "title": "Nmap básico",
-        "command": "nmap -sV {RHOST}",
-        "tags": [
-            "recon",
-            "nmap"
-        ],
-        "description": "Escaneo de puertos con detección de versión"
-    },
-    {
         "title": "Nmap todos los puertos",
         "command": "nmap -p- -T4 {RHOST}",
         "tags": [
@@ -180,5 +171,14 @@
             "hashcat"
         ],
         "description": "Crackeo de hashes NTLM con GPU"
+    },
+    {
+        "title": "comando modificado ",
+        "command": "comando modificado",
+        "tags": [
+            "comando",
+            "modificado"
+        ],
+        "description": "Comando modificado"
     }
 ]
