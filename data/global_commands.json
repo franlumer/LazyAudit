@@ -18,14 +18,13 @@
         "description": "Escaneo con scripts NSE por defecto y guardado de salida"
     },
     {
-        "title": "Nmap UDP top ports",
-        "command": "nmap -sU --top-ports 100 {RHOST}",
+        "title": "test",
+        "command": "test",
         "tags": [
-            "recon",
-            "nmap",
-            "udp"
+            "test",
+            "test"
         ],
-        "description": "Escaneo de los 100 puertos UDP más comunes"
+        "description": "test"
     },
     {
         "title": "Gobuster directorios",

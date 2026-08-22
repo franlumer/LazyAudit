@@ -93,14 +93,23 @@ class Command:
     # del campo en la TUI y hay que cargarlo ahí
     @staticmethod
     # modify(titulo_a_buscar, Command(completo))
-    def modify(title: str, new_command):
+    def modify(title: str, new_command: "Command"):
         old_command = Command._search_by_title(title) #Command()
+
         if old_command is None:
             print("[!] Not Found")
             return
         else:
-            Command.remove(old_command[0].title)
-            Command.add(new_command)
+            old_command_id = Command._find_index_by_title(title)
+            commands_list = Command._read_all()
+
+            left_commands_list, right_commands_list = commands_list[:old_command_id], commands_list[old_command_id+1:]
+            left_commands_list.append(new_command)
+            left_commands_list.extend(right_commands_list)
+
+            Command._write_all(left_commands_list)
+
+
 
     # en teoría ya funciona, hay que usarlo para modify. que parta la lista en dos, donde hay que modificar el comando, 
     # agregue el comando a la primer mitad y agregue la segunda mitad
@@ -109,10 +118,10 @@ class Command:
         commands = Command._read_all()
         for i, c in enumerate(commands):
             if c.title == title:
-                print(i) 
+                return i 
         return None
 
         
-#Command.modify("si funca", Command(title="comando modificado ", description="Comando modificado", tags=["comando","modificado"], command="comando modificado"))
+Command.modify("Nmap UDP top ports", Command(title="test", description="test", tags=["test", "test"], command="test"))
 #Command.search("winps")
-Command._find_index_by_title("Nmap scripts default")
+#Command._find_index_by_title("Nmap scripts default")
