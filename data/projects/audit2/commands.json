@@ -1,0 +1,62 @@
+[
+    {
+        "title": "[TEST-BT] Netstat conexiones",
+        "command": "netstat -tulnp",
+        "tags": ["test", "blueteam", "monitoreo"],
+        "description": "Listado de conexiones y puertos en escucha"
+    },
+    {
+        "title": "[TEST-BT] Auditoría logs auth",
+        "command": "grep 'Failed password' /var/log/auth.log",
+        "tags": ["test", "blueteam", "logs"],
+        "description": "Búsqueda de intentos fallidos de login"
+    },
+    {
+        "title": "[TEST-BT] Chequeo integridad AIDE",
+        "command": "aide --check",
+        "tags": ["test", "blueteam", "integridad"],
+        "description": "Verificación de integridad de archivos del sistema"
+    },
+    {
+        "title": "[TEST-BT] ClamAV escaneo",
+        "command": "clamscan -r /home",
+        "tags": ["test", "blueteam", "antivirus"],
+        "description": "Escaneo de malware en directorio de usuarios"
+    },
+    {
+        "title": "[TEST-BT] Firewall reglas UFW",
+        "command": "ufw status verbose",
+        "tags": ["test", "blueteam", "firewall"],
+        "description": "Revisión del estado y reglas del firewall"
+    },
+    {
+        "title": "[TEST-BT] Procesos sospechosos",
+        "command": "ps aux --sort=-%cpu | head -20",
+        "tags": ["test", "blueteam", "monitoreo"],
+        "description": "Detección de procesos con alto consumo de CPU"
+    },
+    {
+        "title": "[TEST-BT] Auditd revisión",
+        "command": "ausearch -m avc -ts today",
+        "tags": ["test", "blueteam", "auditoria"],
+        "description": "Revisión de eventos de auditoría del día"
+    },
+    {
+        "title": "[TEST-BT] Wireshark captura",
+        "command": "tshark -i eth0 -w captura.pcap",
+        "tags": ["test", "blueteam", "captura-trafico"],
+        "description": "Captura de tráfico de red para análisis"
+    },
+    {
+        "title": "[TEST-BT] Hashes de integridad",
+        "command": "sha256sum -c checksums.txt",
+        "tags": ["test", "blueteam", "integridad"],
+        "description": "Verificación de checksums de archivos críticos"
+    },
+    {
+        "title": "[TEST-BT] Usuarios con acceso sudo",
+        "command": "getent group sudo",
+        "tags": ["test", "blueteam", "auditoria"],
+        "description": "Listado de usuarios con privilegios sudo"
+    }
+]
