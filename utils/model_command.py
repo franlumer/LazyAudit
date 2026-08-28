@@ -5,7 +5,7 @@ import os
 import PATHS
 from rapidfuzz import fuzz
 # ===================== CLASES ======================
-PROJECT = ""
+PROJECT = "/audit1/commands.json"
 PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
 
 @dataclass
@@ -17,13 +17,26 @@ class Command:
 
     @staticmethod
     def _read_all() -> list["Command"]:
-        #Lee el JSON y devuelve una lista de instancias de Command
+        # Lee el JSON y devuelve una lista de instancias de Command
         # Si el json no existe devuelve una lista vacía
         if not os.path.exists(PROJECT_COMMANDS_FILE):
             return []
+        with open(PATHS.GLOBAL_COMMANDS_FILE ,'r', encoding='utf-8') as json_file:
+            global_json_dict = []
+            try: global_json_dict = json.load(json_file)
+            except json.JSONDecodeError:
+                global_json_dict = []
+
         with open(PROJECT_COMMANDS_FILE, 'r', encoding='utf-8') as json_file:
-            json_dict = json.load(json_file)
-        return [Command(**item) for item in json_dict]
+            project_json_dict = []
+            try: project_json_dict = json.load(json_file)
+            except json.JSONDecodeError:
+                project_json_dict = []
+
+        if global_json_dict or project_json_dict:
+            global_json_dict.extend(project_json_dict)
+            print(global_json_dict)
+        return [Command(**item) for item in global_json_dict]
 
     @staticmethod
     def _write_all(commands: list["Command"]) -> None:
@@ -112,8 +125,6 @@ class Command:
 
             Command._write_all(left_commands_list)
 
-
-
     # en teoría ya funciona, hay que usarlo para modify. que parta la lista en dos, donde hay que modificar el comando, 
     # agregue el comando a la primer mitad y agregue la segunda mitad
     @staticmethod
@@ -123,10 +134,9 @@ class Command:
             if c.title == title:
                 return i 
         return None
-
         
 #Command.modify("Nmap UDP top ports", Command(title="test", description="test", tags=["test", "test"], command="test"))
-#Command.search("winps")
+#Command.search("nnap todo")
 #Command._find_index_by_title("Nmap scripts default")
 
 while True:
@@ -140,3 +150,5 @@ while True:
     elif a == "2":
         PROJECT = "/audit2/commands.json"
         PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
+
+#print(Command._read_all())
