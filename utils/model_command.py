@@ -5,7 +5,7 @@ import os
 import PATHS
 from rapidfuzz import fuzz
 # ===================== CLASES ======================
-PROJECT = "/audit1/commands.json"
+PROJECT = ""
 PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
 
 @dataclass
@@ -16,7 +16,7 @@ class Command:
     description: str = ""
 
     @staticmethod
-    def _read_all() -> list["Command"]:
+    def _read_all(PROJECT_COMMANDS_FILE) -> list["Command"]:
         # Lee el JSON y devuelve una lista de instancias de Command
         # Si el json no existe devuelve una lista vacía
         if not os.path.exists(PROJECT_COMMANDS_FILE):
@@ -63,8 +63,8 @@ class Command:
 
     @staticmethod
     # Para debug
-    def show_all():
-        for comm in Command._read_all():
+    def show_all(PROJECT_COMMANDS_FILE):
+        for comm in Command._read_all(PROJECT_COMMANDS_FILE):
             print(comm)
 
     @staticmethod
@@ -138,17 +138,5 @@ class Command:
 #Command.modify("Nmap UDP top ports", Command(title="test", description="test", tags=["test", "test"], command="test"))
 #Command.search("nnap todo")
 #Command._find_index_by_title("Nmap scripts default")
-
-while True:
-    a = input()
-    if a == "show all":
-        Command.show_all()
-    elif a == "1":
-        PROJECT = "/audit1/commands.json"
-        PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
-
-    elif a == "2":
-        PROJECT = "/audit2/commands.json"
-        PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
 
 #print(Command._read_all())

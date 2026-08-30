@@ -1,8 +1,8 @@
-lista = ["1","2","a","3","4","5"]
+from pathlib import Path
+import PATHS
 
-left_list, right_list = lista[:2], lista[3:]
-left_list.extend("A")
-left_list.extend(right_list)
-
-
-print(left_list)
+for path in Path(PATHS.PROJECTS_DIR).rglob("*"):
+    if path.is_file():
+        print(f"Archivo: {path}")
+    elif path.is_dir():
+        print(f"Carpeta: {path}")
