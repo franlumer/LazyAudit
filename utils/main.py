@@ -1,5 +1,5 @@
 from model_command import Command
-import projects
+import utils.model_projects as model_projects
 import PATHS
 
 PROJECT = "/audit1/commands.json"
