@@ -8,7 +8,7 @@ import os
 import PATHS
 
 basic_project = ["commands.json", "findings.json", "project.json", "variables.json"]
-project_name = "audit_test1"
+#project_name = "audit_test1"
 
 @dataclass
 class Project:
@@ -24,7 +24,7 @@ class Project:
 
     @staticmethod
     def create(project_data : "Project"):
-        new_project_dir = PROJECTS_DIR + "/" + project_name
+        new_project_dir = PROJECTS_DIR + "/" + project_data.name
         # Crea la carpeta
         Path(f"{new_project_dir}").mkdir(parents=True, exist_ok=True)
 
@@ -80,6 +80,6 @@ class Project:
 
 
 # No funciona con el 2 porque está vacío pero en teoría debería funcinar porque al crear no se crean vacíos
-Project.modify("audit1", "project1", "asdasdasd", "open", "04-09-2026")
-#Project.create(Project(name="test",description="test test test",status="test",created=date.today().isoformat()))
+#Project.modify("audit1", "project1", "asdasdasd", "open", "04-09-2026")
+Project.create(Project(name="audit2",description="audit2",status="active",created=date.today().isoformat()))
 #Project.search("adassdasdas")
