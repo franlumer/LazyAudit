@@ -4,9 +4,11 @@ import json
 import os
 import PATHS
 from rapidfuzz import fuzz
+import re
 # ===================== CLASES ======================
-PROJECT = ""
-PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT
+PROJECT = "/audit1/"
+PROJECT_COMMANDS_FILE = PATHS.PROJECTS_DIR + PROJECT + "commands.json"
+PROJECT_VARIABLES_FILE = PATHS.PROJECTS_DIR + PROJECT + "variables.json"
 
 @dataclass
 class Command:
@@ -35,7 +37,7 @@ class Command:
 
         if global_json_dict or project_json_dict:
             global_json_dict.extend(project_json_dict)
-            print(global_json_dict)
+            #print(global_json_dict)
         return [Command(**item) for item in global_json_dict]
 
     @staticmethod
@@ -45,7 +47,7 @@ class Command:
         with open(PROJECT_COMMANDS_FILE, "w", encoding="utf-8") as json_file:
             json.dump(json_data, json_file, indent=4, ensure_ascii=False)
 
-    def matches(self, query: str, threshold: int = 70) -> bool:
+    def matches(self, query: str, threshold: int = 86) -> bool:
         query = query.lower()
         text_fields = [self.title, self.command, self.description] + self.tags
 
@@ -69,13 +71,39 @@ class Command:
 
     @staticmethod
     def search(query: str) -> list["Command"]:
-        commands = Command._read_all()
+        commands = Command._read_all(PROJECT_COMMANDS_FILE)
         result = [comm for comm in commands if comm.matches(query)]
-        if result: 
-            for i in result:
-                print(i)
-        else:
+
+        if not result:
             print("[!] Not Found")
+            return result
+
+        variables = Command._load_variables()  # se abre UNA sola vez
+
+        for comm in result:
+            if "{" in comm.command and "}" in comm.command:
+                print(Command._interpolate(comm.command, variables))
+            else:
+                print(comm.command)
+
+        return result
+
+    @staticmethod
+    def _load_variables() -> dict:
+        if not os.path.exists(PROJECT_VARIABLES_FILE):
+            return {}
+        with open(PROJECT_VARIABLES_FILE, "r", encoding="utf-8") as f:
+            try:
+                return json.load(f)
+            except json.JSONDecodeError:
+                return {}
+
+    @staticmethod
+    def _interpolate(text: str, variables: dict) -> str:
+        def replace(match):
+            var_name = match.group(1)
+            return str(variables.get(var_name, match.group(0)))  # si no existe, la deja como estaba
+        return re.sub(r"\{(\w+)\}", replace, text)
 
     @staticmethod
     def add(comm: "Command"):
@@ -125,8 +153,6 @@ class Command:
 
             Command._write_all(left_commands_list)
 
-    # en teoría ya funciona, hay que usarlo para modify. que parta la lista en dos, donde hay que modificar el comando, 
-    # agregue el comando a la primer mitad y agregue la segunda mitad
     @staticmethod
     def _find_index_by_title(title: str) -> int | None:
         commands = Command._read_all()
@@ -134,9 +160,22 @@ class Command:
             if c.title == title:
                 return i 
         return None
+
+    @staticmethod
+    def interpolate_variables(PROJECT_COMMANDS_FILE = str, command = "Command"):
+        with open(PROJECT_VARIABLES_FILE, 'r', encoding='utf-8') as json_file:
+            project_json_dict = []
+            try: project_json_dict = json.load(json_file)
+            except json.JSONDecodeError:
+                project_json_dict = []
+
+            print(project_json_dict)
+
+
+            
         
 #Command.modify("Nmap UDP top ports", Command(title="test", description="test", tags=["test", "test"], command="test"))
-#Command.search("nnap todo")
+Command.search("Nmap todos los puertos")
 #Command._find_index_by_title("Nmap scripts default")
 
 #print(Command._read_all())

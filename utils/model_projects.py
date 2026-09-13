@@ -6,6 +6,7 @@ from datetime import date
 from rapidfuzz import fuzz
 import os
 import PATHS
+import re
 
 basic_project = ["commands.json", "findings.json", "project.json", "variables.json"]
 #project_name = "audit_test1"

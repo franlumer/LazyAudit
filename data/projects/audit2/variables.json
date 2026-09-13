@@ -1,0 +1,6 @@
+{
+  "RHOST": "10.10.10.10",
+  "RPORT": "443",
+  "TARGET_URL": "https://example.com",
+  "DOMAIN": "example.com"
+}
