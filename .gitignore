@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Private project info & documentation
+project_info/
+docs_private/
+
