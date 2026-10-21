@@ -1,8 +1,5 @@
-import re
+from models import Variable, Command, Project, Finding, Host, Scope
 
-command = "nmap -p- -T4 {RHOST}"
+var = Variable(key="test", value="test", scope=Scope.PRIVATE, description="test")
 
-#string = re.search("{.*}", command)
-string = re.sub("{.*}", "192.168.0.1", command)
-
-print(string)
+print(var.key)
