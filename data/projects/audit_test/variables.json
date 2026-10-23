@@ -1,0 +1,14 @@
+[
+    {
+        "key": "RHOST",
+        "value": "192.168.1.50",
+        "scope": "private",
+        "description": "Host de prueba"
+    },
+    {
+        "key": "LPORT",
+        "value": "9001",
+        "scope": "private",
+        "description": "Puerto de escucha"
+    }
+]

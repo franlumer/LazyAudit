@@ -1,0 +1,22 @@
+[
+    {
+        "title": "title",
+        "command": "command",
+        "description": "descripion",
+        "tags": [
+            "tags",
+            "tags"
+        ],
+        "scope": "global"
+    },
+    {
+        "title": "title",
+        "command": "command",
+        "description": "descripion",
+        "tags": [
+            "tags",
+            "tags"
+        ],
+        "scope": "global"
+    }
+]

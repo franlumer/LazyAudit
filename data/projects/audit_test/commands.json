@@ -1,0 +1,62 @@
+[
+    {
+        "title": "prueba2",
+        "command": "prueba {prueba} prueba",
+        "description": "prueba",
+        "tags": [
+            "prueba",
+            "prueba"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "prueba2",
+        "command": "prueba {prueba} prueba",
+        "description": "prueba",
+        "tags": [
+            "prueba",
+            "prueba"
+        ],
+        "scope": "global"
+    },
+    {
+        "title": "prueba1",
+        "command": "prueba {prueba} prueba",
+        "description": "prueba",
+        "tags": [
+            "prueba",
+            "prueba"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "prueba1",
+        "command": "prueba {prueba} prueba",
+        "description": "prueba",
+        "tags": [
+            "prueba",
+            "prueba"
+        ],
+        "scope": "global"
+    },
+    {
+        "title": "prueba0",
+        "command": "prueba {prueba} prueba",
+        "description": "prueba",
+        "tags": [
+            "prueba",
+            "prueba"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "prueba0",
+        "command": "prueba {prueba} prueba",
+        "description": "prueba",
+        "tags": [
+            "prueba",
+            "prueba"
+        ],
+        "scope": "global"
+    }
+]

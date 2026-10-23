@@ -1,0 +1,20 @@
+[
+    {
+        "host": "192.168.1.50",
+        "description": "Servidor web Apache con directorio expuesto",
+        "vulns": [
+            "Directory Listing",
+            "Information Disclosure"
+        ],
+        "severity": "medium"
+    },
+    {
+        "host": "192.168.1.50",
+        "description": "Servicio SSH con autenticación por contraseña débil",
+        "vulns": [
+            "Weak Credentials",
+            "Brute Force"
+        ],
+        "severity": "high"
+    }
+]

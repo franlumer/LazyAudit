@@ -1,41 +1,41 @@
 from dataclasses import dataclass, field
 from enum import Enum
 
-class Scope:
+class ScopeData:
     GLOBAL = 'global'
     PRIVATE = 'private'
 
 @dataclass
-class Command:
+class CommandData:
     title : str
     command : str
     description : str
     tags : list[str] = field(default_factory=list) # Para evitar que se compartan listas.
-    scope : Scope = Scope.PRIVATE
+    scope : ScopeData = ScopeData.PRIVATE
 
 @dataclass
-class Variable:
+class VariableData:
     key : str
     value : str
-    scope : Scope = Scope.PRIVATE
+    scope : ScopeData = ScopeData.PRIVATE
     description : str = ""
 
 @dataclass
-class Project:
+class ProjectData:
     name : str
     description : str
     status : str
     created : str
 
 @dataclass
-class Finding: 
+class FindingData: 
     host : str
     description : str
     vulns : list[str] = field(default_factory=list)
     severity : str = "low"
 
 @dataclass
-class Host: 
+class HostData: 
     ip : str
     hostname : str
     ports : list[str] = field(default_factory=list)

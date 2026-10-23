@@ -1,6 +1,26 @@
-{
-  "RHOST": "10.10.10.10",
-  "RPORT": "443",
-  "TARGET_URL": "https://example.com",
-  "DOMAIN": "example.com"
-}
+[
+    {
+        "key": "RHOST",
+        "value": "10.10.10.10",
+        "scope": "private",
+        "description": "IP del servidor objetivo"
+    },
+    {
+        "key": "RPORT",
+        "value": "443",
+        "scope": "private",
+        "description": "Puerto remoto objetivo"
+    },
+    {
+        "key": "TARGET_URL",
+        "value": "https://example.com",
+        "scope": "private",
+        "description": "URL principal de la auditoría"
+    },
+    {
+        "key": "DOMAIN",
+        "value": "example.com",
+        "scope": "private",
+        "description": "Dominio objetivo"
+    }
+]
