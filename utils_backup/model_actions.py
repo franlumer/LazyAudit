@@ -13,14 +13,14 @@ class Command(CommandData):
         common.save(project_commands, command)
 
     def remove(project_commands : Path, command):
-        
+        pass
 
     def change_scope(command):
         if command.scope == Scope.PRIVATE:
             command.scope = Scope.GLOBAL
         else:
             command.scope = Scope.PRIVATE
-        print(command)
+        #print(command)
 
 class Variable(VariableData):
     pass
@@ -34,8 +34,9 @@ class Finding(FindingData):
 class Host(HostData):
     pass
 
-comando = Command(title="adsads",command="asdasd",description="asdasd",tags=["asdasd"],scope=Scope.GLOBAL)
-Command.add(comando)
+comando = Command(title="titulo1",command="ejecutar tal script",description="ejecuta el script tanto",tags=["ejecucion"],scope=Scope.GLOBAL)
+print(comando.description)
+#Command.add(comando)
 
 
 
