@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 from dataclasses import asdict
 
-def json_to_model(file_path: Path, model_type) -> list: # Lista de Command
+def read_all(file_path: Path, model_type) -> list: # Lista de Command
     # Lee un JSON y devuelve una lista de objetos
 
     # Si el archivo no existe o pesa 0 retorna la lisat vacía
@@ -16,7 +16,7 @@ def json_to_model(file_path: Path, model_type) -> list: # Lista de Command
     except json.JSONDecodeError:
         return []
 
-def model_to_json(file_path: Path, model_obj) -> None:
+def save(file_path: Path, model_obj) -> None: # Agrega un Model (Convertido a JSON) y lo agrega al final de la lista.
         try:
             with open(file_path, "r", encoding="utf-8") as f:
                 #Lee el archivo actual y si no es lista (no existe) crea una lista vacía
@@ -39,7 +39,7 @@ def model_to_json(file_path: Path, model_obj) -> None:
             json.dump(lista_actual, f, indent=4, ensure_ascii=False)    
 
 def fuzzy_matches(query: str, text_fields: list[str], threshold: int = 86) -> bool:
-    # Evalúa si query coincide exacta o a medias con alguno de los campos
+    # Evalúa si query coincide con alguno de los campos
     query = query.lower()
     for field_val in text_fields:
         text_field = (field_val or "").lower()
