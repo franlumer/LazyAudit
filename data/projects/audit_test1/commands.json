@@ -1,0 +1,35 @@
+[
+    {
+        "title": "CrackMapExec SMB enum",
+        "command": "crackmapexec smb {RHOST} -u {USER} -p {PASS} --shares",
+        "description": "Enumeración de recursos compartidos SMB con credenciales",
+        "tags": [
+            "smb",
+            "active-directory",
+            "enum"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "Kerberoasting con GetUserSPNs",
+        "command": "impacket-GetUserSPNs {DOMAIN}/{USER}:{PASS} -dc-ip {RHOST} -request",
+        "description": "Obtención de tickets TGS para crackeo offline",
+        "tags": [
+            "kerberos",
+            "active-directory",
+            "impacket"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "Escaneo rápido de puertos web",
+        "command": "nmap -p 80,443,8080,8443 -sV {RHOST}",
+        "description": "Detección de servicios HTTP/HTTPS en puertos habituales",
+        "tags": [
+            "nmap",
+            "web",
+            "recon"
+        ],
+        "scope": "private"
+    }
+]

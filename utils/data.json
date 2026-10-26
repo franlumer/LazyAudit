@@ -1,0 +1,32 @@
+[
+    {
+        "title": "test",
+        "command": "test",
+        "description": "test",
+        "tags": [
+            "test",
+            "test"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "test",
+        "command": "test",
+        "description": "test",
+        "tags": [
+            "test",
+            "test"
+        ],
+        "scope": "private"
+    },
+    {
+        "title": "test",
+        "command": "test",
+        "description": "test",
+        "tags": [
+            "test",
+            "test"
+        ],
+        "scope": "private"
+    }
+]

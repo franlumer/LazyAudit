@@ -1,0 +1,25 @@
+[
+    {
+        "ip": "192.168.1.50",
+        "hostname": "web-srv.test.local",
+        "ports": [
+            "22",
+            "80",
+            "443"
+        ],
+        "services": [
+            "OpenSSH 8.9p1",
+            "Apache httpd 2.4.52"
+        ]
+    },
+    {
+        "ip": "192.168.1.55",
+        "hostname": "db-srv.test.local",
+        "ports": [
+            "3306"
+        ],
+        "services": [
+            "MySQL 8.0.32"
+        ]
+    }
+]

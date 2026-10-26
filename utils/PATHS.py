@@ -1,20 +1,27 @@
 from pathlib import Path
 
-LAZYAUDIT_DIR = Path(__file__).resolve().parent.parent.parent
-DATA_DIR = LAZYAUDIT_DIR / "data"
-#GLOBAL_COMMANDS_FILE = DATA_DIR / "global_commands.json"
-#GLOBAL_VARS_FILE = DATA_DIR / "global_vars.json"
-ACTUAL_PROJECT = "audit_test"
+# ========== LAZYAUDIT PATHS ==========
+LAZYAUDIT_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = LAZYAUDIT_DIR/"data"
+GLOBAL_DIR = LAZYAUDIT_DIR/"globals"
+
+# ========== PROJECTS PATHS ===========
 PROJECTS_DIR = DATA_DIR / "projects"
-ACTUAL_PROJECT_DIR = DATA_DIR / "projects" / ACTUAL_PROJECT
-GLOBALS = DATA_DIR / "globals"
 
-#CHECKLISTS_DIR = DATA_DIR / "checklists"
-#WORKFLOWS_DIR = DATA_DIR / "workflows"
+PROJECT = "audit_test1"
+ACTIVE_PROJECT_DIR = DATA_DIR/"projects"/PROJECT 
+COMMANDS_FILE = ACTIVE_PROJECT_DIR/"commands.json"
+VARIABLES_FILE = ACTIVE_PROJECT_DIR/"variables.json"
+PROJECT_FILE = ACTIVE_PROJECT_DIR/"project.json"
+FINDINGS_FILE = ACTIVE_PROJECT_DIR/"findings.json"
+#CHECKLISTS_DIR = ACTIVE_PROJECT_DIR/"checklists"
+#WORKFLOWS_DIR = ACTIVE_PROJECT_DIR/"workflows"
 
-print(LAZYAUDIT_DIR)
-print(DATA_DIR)
-print(ACTUAL_PROJECT)
-print(PROJECTS_DIR)
-print(ACTUAL_PROJECT_DIR)
+# ========== GLOBAL PATHS ==========
+GLOBAL_COMMANDS_FILE = DATA_DIR/"global_commands.json"
+GLOBAL_VARS_FILE = DATA_DIR/"global_vars.json"
+#GLOBAL_CHECKLISTS_DIR = DATA_DIR / "checklists"
+#GLOBAL_WORKFLOWS_DIR = DATA_DIR / "workflows"
+
+
 
