@@ -2,8 +2,6 @@
 
 **LazyAudit** es un entorno de trabajo integral basado en una Interfaz de Usuario de Texto (TUI) diseñado para optimizar el flujo de tareas en auditorías de ciberseguridad ofensiva (Pentesting, Red Teaming, Ethical Hacking). Permite aislar proyectos, gestionar comandos con interpolación automática de variables, ejecutar flujos de trabajo (workflows) y mantener una trazabilidad inmutable mediante logs automáticos.
 
-> 🎥 **Video Demo y Funcionamiento:** [Ver Demo en Google Drive](https://drive.google.com/file/d/1LJCL9aKFqqKCjM4LpTQ3q-QUPUUAj1-l/view?usp=drive_link)
-
 ## ✨ Características Clave
 
 - **📁 Aislamiento de Proyectos:** Gestión de contextos separados. Los hosts, variables y hallazgos no se cruzan entre auditorías.
