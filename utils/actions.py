@@ -1,20 +1,12 @@
 from models import *
-from pathlib import Path
-import common
 import PATHS
-import json
 import common
 
 class Scope(ScopeData):
     pass
 
-class Command(CommandData):
-    def add(project_commands : Path, command):
-        common.save(project_commands, command)
-
-    def remove(project_commands : Path, command):
-        pass
-
+class Command(CommandData, common.CommonActions):
+    file_path = PATHS.COMMANDS_FILE
     def change_scope(command):
         if command.scope == Scope.PRIVATE:
             command.scope = Scope.GLOBAL
@@ -22,20 +14,24 @@ class Command(CommandData):
             command.scope = Scope.PRIVATE
         #print(command)
 
-class Variable(VariableData):
+class Variable(VariableData, common.CommonActions):
+    file_path = PATHS.VARIABLES_FILE
     pass
 
-class Project(ProjectData):
+class Project(ProjectData, common.CommonActions):
+    file_path = PATHS.PROJECT_FILE
     pass
 
-class Finding(FindingData):
+class Finding(FindingData, common.CommonActions):
+    file_path = PATHS.FINDINGS_FILE
     pass
 
-class Host(HostData):
+class Host(HostData, common.CommonActions):
+    file_path = PATHS.HOSTS_FILE
     pass
 
-comando = Command(title="titulo1",command="ejecutar tal script",description="ejecuta el script tanto",tags=["ejecucion"],scope=Scope.GLOBAL)
-print(comando.description)
+#comando = Command(title="titulo1",command="ejecutar tal script",description="ejecuta el script tanto",tags=["ejecucion"],scope=Scope.GLOBAL)
+#print(comando.description)
 #Command.add(comando)
 
 

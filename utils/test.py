@@ -1,44 +1,35 @@
 from dataclasses import asdict
-from models import CommandData, ScopeData, HostData
 import json
 import common
 from pathlib import Path
+import PATHS
 
 #old_data = common.read_all(Path("utils/data.json"), CommandData)
 #print(old_data)
 
 #print(common.read_all(Path("utils/data.json"), CommandData)) # -> [Model(), Model()]
-
-hosts = [
-        HostData(
-            ip="192.168.1.50",
-            hostname="web-srv.test.local",
-            ports=["22", "80", "443"],
-            services=["OpenSSH 8.9p1", "Apache httpd 2.4.52"]
-        ),
-        HostData(
-            ip="192.168.1.55",
-            hostname="db-srv.test.local",
-            ports=["3306"],
-            services=["MySQL 8.0.32"]
-        ),
-        HostData(
-            ip="10.10.20.15",
-            hostname="dc01.corp.local",
-            ports=["53", "88", "389", "445"],
-            services=["DNS", "Kerberos", "LDAP", "SMB"]
-        )
-    ]
+'''
+hosts = common.read_all(PATHS.HOSTS_FILE)
 
 for host in hosts:
     print(host)
 
-old_host = HostData(
-            ip="192.168.1.50",
-            hostname="web-srv.test.local",
-            ports=["22", "80", "443"],
-            services=["OpenSSH 8.9p1", "Apache httpd 2.4.52"]
-        )
+old_host = HostData    (
+        ip= "10.10.20.15",
+        hostname = "dc01.corp.local",
+        ports = [
+            "53",
+            "88",
+            "389",
+            "445"
+        ],
+        services = [
+            "Simple DNS Plus",
+            "Kerberos",
+            "Microsoft Windows AD LDAP",
+            "Microsoft-DS SMB"
+        ]
+)
 
 new_host = HostData(
             ip="nuevo",
@@ -47,10 +38,19 @@ new_host = HostData(
             services=["nuevo"]
         )
 
-for host in hosts:
-    if host == old_host:
-        index = hosts.index(host)
-        hosts[index] = new_host
+# Recibe la [Model(), Model()] a modificar, el dato viejo (sacado de la tui) y el dato nuevo (armado)
+def modify(data, old_model, new_model) -> None:
+    for model in data:
+        if model == old_model:
+            index = data.index(model)
+            data[index] = new_model
+
+modify(hosts, old_host, new_host)
 
 for host in hosts:
     print(host)
+
+
+''' 
+from actions import Host, Command, Project
+print(Project.read_all())
