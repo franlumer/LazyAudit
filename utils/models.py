@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from datetime import datetime
 
 class ScopeData:
     GLOBAL = 'global'
@@ -22,9 +23,9 @@ class VariableData:
 @dataclass
 class ProjectData:
     name : str
-    description : str
-    status : str
-    created : str
+    description : str = ""
+    status : str = ""
+    created : str = datetime.now().isoformat()
 
 @dataclass
 class FindingData: 

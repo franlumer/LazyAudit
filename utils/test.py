@@ -52,11 +52,19 @@ for host in hosts:
 
 
 '''
-from actions import Variable, Host, Command, Project, Scope
+from actions import Variable, Host, Command, Project, Scope, Project
 #print(Command.read_all())
 
 
-comando = Command(title='bbbb', command='ejecutar tal script', description='ejecuta el script tanto', tags=['ejecucion'], scope='global')
+#comando = Command(title='bbbb', command='ejecutar tal script', description='ejecuta el script tanto', tags=['ejecucion'], scope='global')
 #Command.add(comando)
 
-print(Command.read_all())
+#print(Command.read_all())
+
+#from datetime import datetime
+new_project = Project(name="audit_test3")
+#Project.add(new_project)
+
+Project.modify(new_project)
+
+#Project.change("audit_test3")

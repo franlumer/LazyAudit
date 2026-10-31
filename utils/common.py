@@ -8,7 +8,10 @@ import PATHS
 # [Model(), Model()] -> { } -> JSON
 # 1. Path. 2. Lista de modelos.
 def _save(file_path: Path, data : list) -> None:
-    
+
+    if not isinstance(data, list): 
+        data = [data]
+        
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump([asdict(item) for item in data], f, indent=4, ensure_ascii=False)
 

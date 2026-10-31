@@ -1,15 +1,20 @@
 from pathlib import Path
+import json
 
 # ========== LAZYAUDIT PATHS ==========
 LAZYAUDIT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = LAZYAUDIT_DIR/"data"
 GLOBAL_DIR = LAZYAUDIT_DIR/"data"/"globals"
+CONFIG_FILE = DATA_DIR/"config.json"
+
+with open(CONFIG_FILE, "r") as f:
+    data = json.load(f)
+    ACTIVE_PROJECT = data["project"]
 
 # ========== PROJECTS PATHS ===========
 PROJECTS_DIR = DATA_DIR / "projects"
 
-PROJECT = "audit_test1"
-ACTIVE_PROJECT_DIR = DATA_DIR/"projects"/PROJECT 
+ACTIVE_PROJECT_DIR = DATA_DIR/"projects"/ACTIVE_PROJECT 
 COMMANDS_FILE = ACTIVE_PROJECT_DIR/"commands.json"
 VARIABLES_FILE = ACTIVE_PROJECT_DIR/"variables.json"
 PROJECT_FILE = ACTIVE_PROJECT_DIR/"project.json"
