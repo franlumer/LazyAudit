@@ -2,14 +2,14 @@
 
 **LazyAudit** es un entorno de trabajo integral basado en una Interfaz de Usuario de Texto (TUI) diseñado para optimizar el flujo de tareas en auditorías de ciberseguridad ofensiva (Pentesting, Red Teaming, Ethical Hacking). Permite aislar proyectos, gestionar comandos con interpolación automática de variables, ejecutar flujos de trabajo (workflows) y mantener una trazabilidad inmutable mediante logs automáticos.
 
-## ✨ Características Clave
+## ⚙️ Características Clave
 
-- **📁 Aislamiento de Proyectos:** Gestión de contextos separados. Los hosts, variables y hallazgos no se cruzan entre auditorías.
-- **⚙️ Interpolación Dinámica:** Biblioteca de comandos reutilizables que interpolan automáticamente variables locales (ej. {RHOST}, {DOMAIN}).
-- **🚀 Workflows Automatizados:** Ejecución secuencial de herramientas de auditoría mediante archivos de configuración (Playbooks).
-- **📝 Gestión de Auditoría:** Registro centralizado de hosts comprometidos, vulnerabilidades (hallazgos) y seguimiento de metodologías mediante Checklists (OWASP, PTES).
-- **📜 Trazabilidad (Logs):** Registro inmutable en formato JSONL de cada comando ejecutado, herramienta invocada y resultado obtenido.
-- **🔒 Despliegue Seguro:** Contenerización vía Docker aplicando el principio de mínimo privilegio para aislar el entorno operativo del sistema anfitrión.
+- **Aislamiento de Proyectos:** Gestión de contextos separados. Los hosts, variables y hallazgos no se cruzan entre auditorías.
+- **Interpolación Dinámica:** Biblioteca de comandos reutilizables que interpolan automáticamente variables locales (ej. {RHOST}, {DOMAIN}).
+- **Workflows Automatizados:** Ejecución secuencial de herramientas de auditoría mediante archivos de configuración (Playbooks).
+- **Gestión de Auditoría:** Registro centralizado de hosts comprometidos, vulnerabilidades (hallazgos) y seguimiento de metodologías mediante Checklists (OWASP, PTES).
+- **Trazabilidad (Logs):** Registro inmutable en formato JSONL de cada comando ejecutado, herramienta invocada y resultado obtenido.
+- **Despliegue Seguro:** Contenerización vía Docker aplicando el principio de mínimo privilegio para aislar el entorno operativo del sistema anfitrión.
 
 ## 🛠️ Tecnologías Utilizadas
 
