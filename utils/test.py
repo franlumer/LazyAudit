@@ -51,6 +51,12 @@ for host in hosts:
     print(host)
 
 
-''' 
-from actions import Host, Command, Project
-print(Project.read_all())
+'''
+from actions import Variable, Host, Command, Project, Scope
+#print(Command.read_all())
+
+
+comando = Command(title='bbbb', command='ejecutar tal script', description='ejecuta el script tanto', tags=['ejecucion'], scope='global')
+#Command.add(comando)
+
+print(Command.read_all())

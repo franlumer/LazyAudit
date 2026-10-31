@@ -2,6 +2,10 @@ from models import *
 import PATHS
 import common
 
+# Los modelos heredan common.CommonActions que es donde está add, modify, delete y remove
+# permite que se los llame directamente con la acción y se evita pasar el Path. 
+# Command.reead_all(), Variable.add(), etc.
+
 class Scope(ScopeData):
     pass
 
@@ -30,12 +34,12 @@ class Host(HostData, common.CommonActions):
     file_path = PATHS.HOSTS_FILE
     pass
 
+
+
+
 #comando = Command(title="titulo1",command="ejecutar tal script",description="ejecuta el script tanto",tags=["ejecucion"],scope=Scope.GLOBAL)
 #print(comando.description)
 #Command.add(comando)
-
-
-
 
 #comando = [d for d in common.read_all(PATHS.get_project_commands("audit_test"), Command) if d.title == "prueba0"]
 #Command.change_scope(comando[0])

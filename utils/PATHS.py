@@ -3,7 +3,7 @@ from pathlib import Path
 # ========== LAZYAUDIT PATHS ==========
 LAZYAUDIT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = LAZYAUDIT_DIR/"data"
-GLOBAL_DIR = LAZYAUDIT_DIR/"globals"
+GLOBAL_DIR = LAZYAUDIT_DIR/"data"/"globals"
 
 # ========== PROJECTS PATHS ===========
 PROJECTS_DIR = DATA_DIR / "projects"
@@ -19,8 +19,8 @@ HOSTS_FILE = ACTIVE_PROJECT_DIR/"hosts.json"
 #WORKFLOWS_DIR = ACTIVE_PROJECT_DIR/"workflows"
 
 # ========== GLOBAL PATHS ==========
-GLOBAL_COMMANDS_FILE = DATA_DIR/"global_commands.json"
-GLOBAL_VARS_FILE = DATA_DIR/"global_vars.json"
+GLOBAL_COMMANDS_FILE = GLOBAL_DIR/"global_commands.json"
+GLOBAL_VARS_FILE = GLOBAL_DIR/"global_vars.json"
 #GLOBAL_CHECKLISTS_DIR = DATA_DIR / "checklists"
 #GLOBAL_WORKFLOWS_DIR = DATA_DIR / "workflows"
 
