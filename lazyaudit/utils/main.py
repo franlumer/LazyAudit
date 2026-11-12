@@ -6,10 +6,6 @@ from actions import Project, Command, Variable, Host, Finding, Scope, Checklist,
 
 from logger import log, Event
 
-# 1. Sin parámetros (ej. -lp): lleva action="store_true".
-# 2. Con 1 parámetro (ej. -sp audit_test1): no lleva action (es el comportamiento por defecto, te guarda el string que escribas en args.set_project).
-# 3. Con 2 o más parámetros (ej. -sv RHOST 10.10.10.5): lleva nargs=2 (y te guarda una lista de 2 elementos ["RHOST", "10.10.10.5"] en args.set_var).
-
 parser = argparse.ArgumentParser(description='LazyAudit')
 
 # ========== Comandos ===========
